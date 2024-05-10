@@ -1,0 +1,7 @@
+POST http://localhost:3000/kontakte/
+Content-Type: application/json
+
+{
+    "name": "Dieter",
+    "birthday": "1997-07-07"
+}

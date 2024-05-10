@@ -1,0 +1,8 @@
+PUT http://localhost:3000/kontakte/gibtsnicht
+Content-Type: application/json
+
+{
+    "id": "aaa",
+    "name": "Neu",
+    "birthday": "1990-09-09"
+}

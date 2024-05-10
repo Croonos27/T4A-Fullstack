@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "REST-API with SQLite",
+  "main": "restapi.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx nodemon restapi.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Franz Kohnle",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^9.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
