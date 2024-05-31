@@ -7,6 +7,7 @@
     let name = "Moni Musterfrau";
     let birthday = "2000-01-01";
     let size = 'XL'
+    let address = "Musterstraße: 05"
 
     const buttonSaveClick = async () => {
         // neuen Kontakt erstellen
@@ -14,6 +15,7 @@
             name: name,
             birthday: birthday,
             size: size,
+            address: address,
         };
 
         // neuen Kontakt in Datenbank speichern
@@ -60,6 +62,12 @@
     </select>
 </div>
 
+
+<!-- Adresse -->
+<div class="mb-2">
+    <label class="form-label" for="inputaddress">Adresse</label>
+    <input bind:value={address} class="form-control" id="inputaddress" type="text" />
+</div>
 
 <!-- Buttons -->
 <button on:click={buttonSaveClick} class="btn btn-success me-2"

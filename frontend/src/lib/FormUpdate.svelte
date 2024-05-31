@@ -7,6 +7,7 @@
     let name = $contactToUpdate.name;
     let birthday = $contactToUpdate.birthday;
     let size = $contactToUpdate.size;
+    let address = $contactToUpdate.address;
 
     const buttonSaveClick = async () => {
         // neuen Kontakt erstellen
@@ -15,6 +16,7 @@
             name: name,
             birthday: birthday,
             size: size,
+            address: address,
         };
 
         // neuen Kontakt in Datenbank speichern
@@ -59,6 +61,13 @@
     <option>L</option>
     <option>XL</option>
     </select>
+</div>
+
+
+<!-- Adress -->
+<div class="mb-2">
+    <label class="form-label" for="inputaddress">Adresse</label>
+    <input bind:value={address} class="form-control" id="inputadress" type="text" />
 </div>
 
 <!-- Buttons -->

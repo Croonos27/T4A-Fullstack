@@ -19,7 +19,8 @@ export class DataAccessObject {
             'id' TEXT,
             'name'	TEXT,
             'birthday'	TEXT,
-            'size' TEXT
+            'size' TEXT,
+            'address' TEXT
         )
         `;
         this.db.exec(sqlCreateTable);
@@ -27,11 +28,11 @@ export class DataAccessObject {
         // Beispieldatensätze erstellen
         const sqlInsert = `
         INSERT INTO kontakte
-            (id, name, birthday, size)
+            (id, name, birthday, size, address)
         VALUES 
-            ('aaa', 'Anna', '2003-12-24', 'XL'),
-            ('bbb', 'Berta', '2001-01-05', 'M'),
-            ('ccc', 'Carla', '1998-07-30', 'S')
+            ('aaa', 'Anna', '2003-12-24', 'XL', 'Alphastraße: 01'),
+            ('bbb', 'Berta', '2001-01-05', 'M', 'Betastreet: B'),
+            ('ccc', 'Carla', '1998-07-30', 'S', 'Gammastraße: 15')
         `;
         this.db.exec(sqlInsert);
     }
@@ -42,12 +43,12 @@ export class DataAccessObject {
     addKontakt(kontakt) {
         const sql = `
         INSERT INTO kontakte
-            (id, name, birthday, size)
+            (id, name, birthday, size, address)
         VALUES
-            (?, ?, ?, ?)
+            (?, ?, ?, ?, ?)
         `;
         const statement = this.db.prepare(sql);
-        statement.run(kontakt.id, kontakt.name, kontakt.birthday, kontakt.size);
+        statement.run(kontakt.id, kontakt.name, kontakt.birthday, kontakt.size, kontakt.address);
     }
 
     //--------------------
@@ -101,11 +102,12 @@ export class DataAccessObject {
         SET
             name = ?,
             birthday = ?,
-            size = ?
+            size = ?,
+            address = ?
         WHERE id = ?
         `;
         const statement = this.db.prepare(sql);
-        const info = statement.run(kontakt.name, kontakt.birthday, kontakt.size, kontakt.id);
+        const info = statement.run(kontakt.name, kontakt.birthday, kontakt.size, kontakt.address, kontakt.id);
         const anzahlDerAenderungen = info.changes;
         return anzahlDerAenderungen;
     }

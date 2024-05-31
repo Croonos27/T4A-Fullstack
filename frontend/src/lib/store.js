@@ -12,7 +12,8 @@ export const contactToUpdate = writable({
     id: '',
     name: '',
     birthday: '',
-    size: ''
+    size: '',
+    address: '',
 });
 
 export const sortCategory = writable('name');
