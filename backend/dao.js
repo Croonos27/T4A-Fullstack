@@ -20,7 +20,8 @@ export class DataAccessObject {
             'name'	TEXT,
             'birthday'	TEXT,
             'size' TEXT,
-            'address' TEXT
+            'address' TEXT,
+            'konto' TEXT
         )
         `;
         this.db.exec(sqlCreateTable);
@@ -28,11 +29,11 @@ export class DataAccessObject {
         // Beispieldatensätze erstellen
         const sqlInsert = `
         INSERT INTO kontakte
-            (id, name, birthday, size, address)
+            (id, name, birthday, size, address, konto)
         VALUES 
-            ('aaa', 'Anna', '2003-12-24', 'XL', 'Alphastraße: 01'),
-            ('bbb', 'Berta', '2001-01-05', 'M', 'Betastreet: B'),
-            ('ccc', 'Carla', '1998-07-30', 'S', 'Gammastraße: 15')
+            ('aaa', 'Anna', '2003-12-24', 'XL', 'Alphastraße: 01', 'DE02100100100006820101'),
+            ('bbb', 'Berta', '2001-01-05', 'M', 'Betastreet: B', 'DE02700100800030876808'),
+            ('ccc', 'Carla', '1998-07-30', 'S', 'Gammastraße: 15', 'DE02200505501015871393')
         `;
         this.db.exec(sqlInsert);
     }
@@ -43,12 +44,12 @@ export class DataAccessObject {
     addKontakt(kontakt) {
         const sql = `
         INSERT INTO kontakte
-            (id, name, birthday, size, address)
+            (id, name, birthday, size, address, konto)
         VALUES
-            (?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?)
         `;
         const statement = this.db.prepare(sql);
-        statement.run(kontakt.id, kontakt.name, kontakt.birthday, kontakt.size, kontakt.address);
+        statement.run(kontakt.id, kontakt.name, kontakt.birthday, kontakt.size, kontakt.address, kontakt.konto);
     }
 
     //--------------------
@@ -103,11 +104,12 @@ export class DataAccessObject {
             name = ?,
             birthday = ?,
             size = ?,
-            address = ?
+            address = ?,
+            konto = ?
         WHERE id = ?
         `;
         const statement = this.db.prepare(sql);
-        const info = statement.run(kontakt.name, kontakt.birthday, kontakt.size, kontakt.address, kontakt.id);
+        const info = statement.run(kontakt.name, kontakt.birthday, kontakt.size, kontakt.address, kontakt.konto, kontakt.id);
         const anzahlDerAenderungen = info.changes;
         return anzahlDerAenderungen;
     }

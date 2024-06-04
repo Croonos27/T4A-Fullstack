@@ -8,6 +8,7 @@
     let birthday = "2000-01-01";
     let size = 'XL'
     let address = "Musterstraße: 05"
+    let konto = 'DE02700202700010108669'
 
     const buttonSaveClick = async () => {
         // neuen Kontakt erstellen
@@ -16,6 +17,7 @@
             birthday: birthday,
             size: size,
             address: address,
+            konto : konto,
         };
 
         // neuen Kontakt in Datenbank speichern
@@ -69,6 +71,12 @@
     <input bind:value={address} class="form-control" id="inputaddress" type="text" />
 </div>
 
+
+<!-- Kontonummer -->
+<div class="mb-2">
+    <label class="form-label" for="inputkonto">Kontonummer</label>
+    <input bind:value={konto} class="form-control" id="inputkonto" type="text" />
+</div>
 <!-- Buttons -->
 <button on:click={buttonSaveClick} class="btn btn-success me-2"
     >Speichern</button

@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Franz Kohnle",
+  "author": "Simon Hibbeln",
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^9.5.0",

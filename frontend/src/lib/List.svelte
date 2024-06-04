@@ -129,6 +129,7 @@
             <th>Geburtstag</th>
             <th>T-Shirt Größe</th>
             <th>Adresse</th>
+            <th>Bankkonto</th>
             <th>-</th>
         </tr>
     </thead>
@@ -139,6 +140,7 @@
                 <td>{getLocalDate(contact.birthday)}</td>
                 <td>{contact.size}</td>
                 <td>{contact.address}</td>
+                <td>{contact.konto}</td>
                 <td>
                     <button
                         on:click={() => {
