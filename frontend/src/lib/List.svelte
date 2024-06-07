@@ -57,6 +57,17 @@
         return date.toLocaleDateString();
     };
 
+    const texttoemojis = (animal) => {
+        switch(animal){
+            case 'dog':
+                return "🐕‍🦺";
+            case 'cat':
+                return "😹";
+            case 'mouse':
+                return "🐁";
+        }
+    }
+
     const buttonNewClick = () => {
         // Eingabeformular
         // für neuen Kontakt anzeigen
@@ -91,6 +102,7 @@
         <option value="all">Alle</option>
         <option value="after-2000">nach 2000 geboren</option>
         <option value="size">Größe</option>
+        <option value="dogowner">Hundebesitzer</option>
     </select>
 </div>
 
@@ -136,7 +148,7 @@
     <tbody>
         {#each contactList as contact}
             <tr>
-                <td>{contact.name}</td>
+                <td>{contact.name} {texttoemojis(contact.animal)}</td>
                 <td>{getLocalDate(contact.birthday)}</td>
                 <td>{contact.size}</td>
                 <td>{contact.address}</td>

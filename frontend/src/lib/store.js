@@ -8,6 +8,7 @@ export const contactToDelete = writable({
     name: ''
 });
 
+
 export const contactToUpdate = writable({
     id: '',
     name: '',
@@ -15,6 +16,7 @@ export const contactToUpdate = writable({
     size: '',
     address: '',
     konto: '',
+    animal: '',
 });
 
 export const sortCategory = writable('name');

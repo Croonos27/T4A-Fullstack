@@ -9,6 +9,7 @@
     let size = $contactToUpdate.size;
     let address = $contactToUpdate.address;
     let konto = $contactToUpdate.konto;
+    let animal = $contactToUpdate.animal;
 
     const buttonSaveClick = async () => {
         // neuen Kontakt erstellen
@@ -19,6 +20,7 @@
             size: size,
             address: address,
             konto: konto,
+            animal: animal,
         };
 
         // neuen Kontakt in Datenbank speichern
@@ -76,6 +78,15 @@
 <div class="mb-2">
     <label class="form-label" for="inputkonto">Kontonummer</label>
     <input bind:value={konto} class="form-control" id="inputkonto" type="text" />
+</div>
+
+<!--animal -->
+<div class="mb-2">
+    <select class="form-select" bind:value={animal}>
+        <option value="dog">Hund 🐕‍🦺</option>
+        <option value="cat">Katze 😹</option>
+        <option value="mouse">Maus 🐁</option>
+    </select>
 </div>
 
 <!-- Buttons -->
