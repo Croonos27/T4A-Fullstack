@@ -17,7 +17,7 @@
             case "birthday":
                 // nach Alter sortieren
                 contactList.sort((contact1, contact2) =>
-                    contact2.birthday.localeCompare(contact1.birthday),
+                    contact1.birthday.localeCompare(contact2.birthday),
                 );
                 break;
             default:
