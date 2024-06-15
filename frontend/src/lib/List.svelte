@@ -100,7 +100,7 @@
     <h4>Filtern</h4>
     <select class="form-select" bind:value={$filter}>
         <option value="all">Alle</option>
-        <option value="after-2000">nach 2000 geboren</option>
+        <!--<option value="after-2000">nach 2000 geboren</option>-->
         <option value="size">Größe</option>
         <option value="dogowner">Hundebesitzer</option>
     </select>
@@ -130,6 +130,17 @@
             value="birthday"
         />
         <label class="form-check-label" for="radioAlter">nach Alter</label>
+    </div>
+    <div class="form-check">
+        <input
+            bind:group={$filter}
+            class="form-check-input"
+            type="radio"
+            name="sortieren"
+            id="radioafter-2000"
+            value="after-2000"
+        />
+        <label class="form-check-label" for="radioafter-2000">Nach 2000 Gebohren</label>
     </div>
 </div>
 

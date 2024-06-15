@@ -82,7 +82,8 @@
 
 <!--animal -->
 <div class="mb-2">
-    <select class="form-select" bind:value={animal}>
+    <label class="form-label" for="select-animal">Lieblingstier</label>
+    <select class="form-select" id="select-animal" bind:value={animal}>
         <option value="dog">Hund 🐕‍🦺</option>
         <option value="cat">Katze 😹</option>
         <option value="mouse">Maus 🐁</option>
