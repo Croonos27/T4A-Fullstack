@@ -22,7 +22,8 @@ export class DataAccessObject {
             'size' TEXT,
             'address' TEXT,
             'konto' TEXT,
-            'animal' TEXT
+            'animal' TEXT,
+            'sex' TEXT
         )
         `;
         this.db.exec(sqlCreateTable);
@@ -30,11 +31,11 @@ export class DataAccessObject {
         // Beispieldatensätze erstellen
         const sqlInsert = `
         INSERT INTO kontakte
-            (id, name, birthday, size, address, konto, animal)
+            (id, name, sex, birthday, size, address, konto, animal)
         VALUES 
-            ('aaa', 'Anna', '2003-12-24', 'XL', 'Alphastraße: 01', 'DE02100100100006820101', 'dog'),
-            ('bbb', 'Berta', '2001-01-05', 'M', 'Betastreet: B', 'DE02700100800030876808', 'cat'),
-            ('ccc', 'Carla', '1998-07-30', 'S', 'Gammastraße: 15', 'DE02200505501015871393', 'mouse')
+            ('aaa', 'Anna', 'women', '2003-12-24', 'XL', 'Alphastraße: 01', 'DE02100100100006820101', 'dog'),
+            ('bbb', 'Berta', 'divers', '2001-01-05', 'M', 'Betastreet: B', 'DE02700100800030876808', 'cat'),
+            ('ccc', 'Carl', 'man', '1998-07-30', 'S', 'Gammastraße: 15', 'DE02200505501015871393', 'mouse')
         `;
         this.db.exec(sqlInsert);
     }
@@ -45,12 +46,12 @@ export class DataAccessObject {
     addKontakt(kontakt) {
         const sql = `
         INSERT INTO kontakte
-            (id, name, birthday, size, address, konto, animal)
+            (id, name, sex, birthday, size, address, konto, animal)
         VALUES
-            (?, ?, ?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?, ?, ?)
         `;
         const statement = this.db.prepare(sql);
-        statement.run(kontakt.id, kontakt.name, kontakt.birthday, kontakt.size, kontakt.address, kontakt.konto, kontakt.animal);
+        statement.run(kontakt.id, kontakt.name, kontakt.sex, kontakt.birthday, kontakt.size, kontakt.address, kontakt.konto, kontakt.animal);
     }
 
     //--------------------
@@ -79,6 +80,10 @@ export class DataAccessObject {
             case 'dogowner':
                 sql = `SELECT * FROM kontakte WHERE animal == 'dog'`
                 break;
+            
+            case 'women':
+                sql = `SELECT * FROM kontakte WHERE sex == 'women'`
+                break;
             default: // all
                 // alle Kontakte
                 sql = 'SELECT * FROM kontakte';
@@ -106,6 +111,7 @@ export class DataAccessObject {
         UPDATE kontakte
         SET
             name = ?,
+            sex = ?,
             birthday = ?,
             size = ?,
             address = ?,
@@ -114,7 +120,7 @@ export class DataAccessObject {
         WHERE id = ?
         `;
         const statement = this.db.prepare(sql);
-        const info = statement.run(kontakt.name, kontakt.birthday, kontakt.size, kontakt.address, kontakt.konto, kontakt.animal, kontakt.id);
+        const info = statement.run(kontakt.name, kontakt.sex, kontakt.birthday, kontakt.size, kontakt.address, kontakt.konto, kontakt.animal, kontakt.id);
         const anzahlDerAenderungen = info.changes;
         return anzahlDerAenderungen;
     }

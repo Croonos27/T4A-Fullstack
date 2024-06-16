@@ -17,6 +17,7 @@ export const contactToUpdate = writable({
     address: '',
     konto: '',
     animal: '',
+    sex: '',
 });
 
 export const sortCategory = writable('name');

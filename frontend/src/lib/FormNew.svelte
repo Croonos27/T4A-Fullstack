@@ -10,6 +10,7 @@
     let address = "Musterstraße: 05"
     let konto = 'DE02700202700010108669'
     let animal = 'dog'
+    let sex = 'not defined'
 
     const buttonSaveClick = async () => {
         // neuen Kontakt erstellen
@@ -20,6 +21,7 @@
             address: address,
             konto : konto,
             animal : animal,
+            sex : sex,
         };
 
         // neuen Kontakt in Datenbank speichern
@@ -89,6 +91,18 @@
         <option value="mouse">Maus 🐁</option>
     </select>
 </div>
+
+<!--sex -->
+<div class="mb-2">
+    <label class="form-label" for="select-sex">Geschlecht</label>
+    <select class="form-select" id="select-sex" bind:value={sex}>
+        <option value="man">Mann ♂️</option>
+        <option value="women">Frau ♀️</option>
+        <option value="divers">Anders 🤷</option>
+        <option value="not defined">Bitte Geschlecht auswählen</option>
+    </select>
+</div>
+
 <!-- Buttons -->
 <button on:click={buttonSaveClick} class="btn btn-success me-2"
     >Speichern</button

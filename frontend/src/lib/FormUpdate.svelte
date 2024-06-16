@@ -10,6 +10,7 @@
     let address = $contactToUpdate.address;
     let konto = $contactToUpdate.konto;
     let animal = $contactToUpdate.animal;
+    let sex = $contactToUpdate.sex;
 
     const buttonSaveClick = async () => {
         // neuen Kontakt erstellen
@@ -21,6 +22,7 @@
             address: address,
             konto: konto,
             animal: animal,
+            sex: sex,
         };
 
         // neuen Kontakt in Datenbank speichern
@@ -87,6 +89,17 @@
         <option value="dog">Hund 🐕‍🦺</option>
         <option value="cat">Katze 😹</option>
         <option value="mouse">Maus 🐁</option>
+    </select>
+</div>
+
+<!--sex -->
+<div class="mb-2">
+    <label class="form-label" for="select-sex">Geschlecht</label>
+    <select class="form-select" id="select-sex" bind:value={sex}>
+        <option value="man">Mann ♂️</option>
+        <option value="women">Frau ♀️</option>
+        <option value="divers">Anders 🤷</option>
+        <option value="not defined">Bitte Geschlecht auswählen</option>
     </select>
 </div>
 

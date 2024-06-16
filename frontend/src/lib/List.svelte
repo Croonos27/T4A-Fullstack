@@ -68,6 +68,18 @@
         }
     }
 
+    const texttosex = (sex) => {
+        switch(sex){
+            case 'man':
+                return "Mann ♂️";
+            case 'women':
+                return "Frau ♀️";
+            case 'divers':
+                return "Divers 🤷";
+
+        }
+    }
+
     const buttonNewClick = () => {
         // Eingabeformular
         // für neuen Kontakt anzeigen
@@ -103,6 +115,7 @@
         <!--<option value="after-2000">nach 2000 geboren</option>-->
         <option value="size">Größe</option>
         <option value="dogowner">Hundebesitzer</option>
+        <option value="women">Frauen</option>
     </select>
 </div>
 
@@ -149,6 +162,7 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Geschlecht</th>
             <th>Geburtstag</th>
             <th>T-Shirt Größe</th>
             <th>Adresse</th>
@@ -160,6 +174,7 @@
         {#each contactList as contact}
             <tr>
                 <td>{contact.name} {texttoemojis(contact.animal)}</td>
+                <td>{texttosex(contact.sex)}</td>
                 <td>{getLocalDate(contact.birthday)}</td>
                 <td>{contact.size}</td>
                 <td>{contact.address}</td>
